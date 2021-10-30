@@ -1,7 +1,6 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-/* Hakan bu dosyada değişiklik yaptı */
 class Close extends MY_Controller
 {
     public $page = "Close";
