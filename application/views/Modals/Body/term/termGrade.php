@@ -1,0 +1,1 @@
+Bu Döneme Ait Not Girişi Var. Silinemez!

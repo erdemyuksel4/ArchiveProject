@@ -1,0 +1,173 @@
+<div class="container">
+    <div class="card">
+        <div class="card-header">
+            Öğrenci İstatistikleri 
+            <button class="btn btn-sm btn-primary btn-yazdir" data-area="#print">Yazdır</button>
+        </div>
+        <div class="card-body" >
+
+            <style>
+                .sutunlari-dagit td {
+                    width:0%;
+                }
+            </style>
+            
+            <div class="pageArea"id="print">
+    
+    
+    <table class="table table-bordered marginPrint" border="1">
+        <tr>
+            <td colspan="21" class="text-center"><h2>ÖĞRENCİ İSTATİSTİK FORMU &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; EK-9
+            </h2></td>
+        </tr>
+        <tr>
+            <td colspan="2">EĞİTİM BÖLGESİ</td>
+            <td colspan="17"></td>
+            <td colspan="2">.../.../20...</td>
+        </tr>
+        <tr style="height: 160px;" class="sutunlari-dagit">
+            <td> Sıra No</td>
+            <td>Görev Yeri Bölge</td>
+            <td>Öğretmeninin Adı Soyadı</td>
+            <td class="rotate col2"><div><div>Sabah Ders Saati</div></div></td>
+            <td class="rotate col2"><div><div>Sabah Derslerine Katılan Öğrenci Sayısı</div></div></td>
+            <td class="rotate col2"><div><div>Öğleden Sonra Ders Saati</div></div></td>
+            <td class="rotate col3"><div><div>Öğleden Sonra Derslere Katılan Öğrenci Sayısı</div></div></td>
+            <td colspan="2" class="rotate col2"><div><div>Grundschule Öğrenci Sayısı</div></div></td>
+            <td colspan="2" class="rotate col2"><div><div>Förderschule Öğrenci sayısı</div></div></td>
+            <td colspan="2" class="rotate col2"><div><div>Haupt-Werkrealschule Öğrenci Sayısı</div></div></td>
+            <td colspan="2" class="rotate col2"><div><div>Realschule Öğrenci Sayısı</div></div></td>
+            <td colspan="2" class="rotate col2"><div><div>Gymnasium Öğrenci Sayısı</div></div></td>
+            <td colspan="2" class="rotate col4"><div><div>Türkçe ve Türk Kültürü Dersine Katılan Toplam Öğrenci Sayısı</div></div></td>
+            <td class="rotate col2"><div><div>Okullardaki Toplam Türk Öğrenci Sayısı</div></div></td>
+            <td class="rotate col3"><div><div>Türkçe ve Türk Kültürü Dersi Yapılan Okul Sayısı</div></div></td>  																		
+    
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>Y/Ç</td>
+            <td>Y/Ç</td>
+            <td>Y/Ç</td>
+            <td>Y/Ç</td>
+            <td>K</td>
+            <td>E</td>
+            <td>K</td>
+            <td>E</td>
+            <td>K</td>
+            <td>E</td>
+            <td>K</td>
+            <td>E</td>
+            <td>K</td>
+            <td>E</td>
+            <td>K</td>
+            <td>E</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td colspan="2">Bölge Toplamı	
+            </td>
+            <td></td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+        </tr>
+    
+        <tr>
+            <td colspan="2">Ortalama	
+            </td>
+            <td></td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+        </tr>
+        <tr>
+           <td>&nbsp;</td>
+           <td>&nbsp;</td>
+           <td>&nbsp;</td>
+           <td>&nbsp;</td>
+           <td>&nbsp;</td>
+           <td>&nbsp;</td>
+           <td>&nbsp;</td>
+           <td>&nbsp;</td>
+           <td>&nbsp;</td>
+           <td>&nbsp;</td>
+           <td>&nbsp;</td>
+           <td>&nbsp;</td>
+           <td>&nbsp;</td>
+           <td>&nbsp;</td>
+           <td>&nbsp;</td>
+           <td>&nbsp;</td>
+           <td>&nbsp;</td>
+           <td>&nbsp;</td>
+           <td>&nbsp;</td>
+           <td>&nbsp;</td>
+           <td>&nbsp;</td>
+    
+        </tr>
+    </table>
+    
+    <p>EĞİTİM ATEŞESİ</p>
+    
+    
+    </div>
+    
+        </div>
+    </div>
+</div>
