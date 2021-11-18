@@ -52,6 +52,7 @@ class Schools extends MY_Controller
         ];
         $data["urls"] = $this->PagePermControlList($urls);
         $this->Find_model->LoadModel($this);
+        $filtre = [];
         if(isset($this->param["okulId"])==true&& $this->param["okulId"]!=""){
             $filtre["id"] = $this->param["okulId"];
         }
