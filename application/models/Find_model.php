@@ -125,9 +125,15 @@ class Find_model extends CI_Model{
             }else{
                 $get[$key]["notB"] = $nots;
             }
-            foreach($get[$key]["notB"] as $key2 => $not){
-                $not["yil"] = $this->Term->GetTermYear($not["donemId"]);
-                $get[$key]["notB"][$key2] = $not;
+            if(is_array(current($get[$key]["notB"]))==true){
+                foreach($get[$key]["notB"] as $key2 => $not){
+                    $not["yil"] = $this->Term->GetTermYear($not["donemId"]);
+                    $get[$key]["notB"][$key2] = $not;
+                }
+            }else{
+                $notB_ = $get[$key]["notB"];
+                $not["yil"] = $this->Term->GetTermYear($notB_["donemId"]);
+                $get[$key]["notB"][] = $not;
             }
             $get[$key]["donemB"] = $this->Term->ReadDetailSingle(["id"=>$this->param["donemId"]??$this->Term->FindActiveTerm()["id"]]);
             if($get[$key]["donemB"]["id"]!=($this->param["donemId"]??$this->Term->FindActiveTerm()["id"])){

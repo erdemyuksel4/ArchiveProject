@@ -28,7 +28,7 @@ class Competition extends MY_Controller
         }else{
             $bilgiler = $this->Competition_model->Read();
             foreach($bilgiler as $key => $bilgi){
-                $bilgiler[$key]["ogrenciAdi"] = $this->Student_model->ReadDetail(array("id"=>$value["ogrenciId"]))[0]["adSoyad"];
+                $bilgiler[$key]["ogrenciAdi"] = $this->Student_model->ReadDetail(array("id"=>$bilgi["ogrenciId"]))[0]["adSoyad"];
             }
             $data["bilgiler"] = $bilgiler;
         }

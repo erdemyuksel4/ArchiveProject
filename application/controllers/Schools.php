@@ -15,6 +15,7 @@ class Schools extends MY_Controller
         $this->load->model("Teacher_model");
         $this->load->model("Student_model");
         $this->load->model("Find_model");
+        $this->load->model("Term_model");
         $this->load->model("TOAB_model");
         $this->load->model("TOABOVT_model");
     }
@@ -51,7 +52,16 @@ class Schools extends MY_Controller
         ];
         $data["urls"] = $this->PagePermControlList($urls);
         $this->Find_model->LoadModel($this);
-        $data["okullar"] = $this->Find_model->Find("Schools");
+        if(isset($this->param["okulId"])==true&& $this->param["okulId"]!=""){
+            $filtre["id"] = $this->param["okulId"];
+        }
+        if(isset($this->param["bolgeId"])==true&& $this->param["bolgeId"]!=""){
+            $filtre["bolgeId"] = $this->param["bolgeId"];
+        }
+        if(isset($this->param["yerId"])==true&& $this->param["yerId"]!=""){
+            $filtre["yerId"] = $this->param["yerId"];
+        }
+        $data["okullar"] = $this->Find_model->Find("Schools", $filtre);
         foreach ($data["okullar"] as $key => $value) {
             $this->School_model->tur = $value["tur"];
             $data["okullar"][$key]["tur"] = $this->School_model->FindSchoolType()[0] ?? "";

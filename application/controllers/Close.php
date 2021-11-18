@@ -104,6 +104,7 @@ class Close extends MY_Controller
         
     }
     protected function Edit(){
+        $c = "";
         foreach($this->param["asi"] as $key => $value){
             $this->Vaccine_model->asiAdi = $value;
             $this->Vaccine_model->ogretmenId = 0;

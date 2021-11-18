@@ -43,17 +43,17 @@
                                 <?php
                                 if(isset($urls["Detail"])){
                                     ?>
-                                    <button class="btn btn-sm btn-info "  data-title="Ödül & Yarışma Bilgisi Detayları" data-info="<?=base_url($urls["Detail"]."/".$value["id"])?>" type="button">Detaylar</button>
+                                    <button class="btn btn-sm btn-info "  data-title="Ödül & Yarışma Bilgisi Detayları" onclick="getmodal(this)" data-info="<?=base_url($urls["Detail"]."/".$bilgi["id"])?>" type="button">Detaylar</button>
                                     <?php
                                 }
                                 if(isset($urls["Edit"])){
                                     ?>
-                                    <button class="btn btn-sm btn-warning " data-title="Ödül & Yarışma Bilgisi Düzenle" data-info="<?=base_url($urls["Edit"]."/".$value["id"])?>" type="button">Düzenle</button>
+                                    <button class="btn btn-sm btn-warning " data-title="Ödül & Yarışma Bilgisi Düzenle"onclick="getmodal(this)"  data-info="<?=base_url($urls["Edit"]."/".$bilgi["id"])?>" type="button">Düzenle</button>
                                     <?php
                                 }
                                 if(isset($urls["Delete"])){
                                     ?>
-                                    <button class="btn btn-sm btn-danger " onclick="getmodal(this)" data-info="<?=base_url($urls["Delete"]."/".$value["id"])?>" data-title="Emin Misiniz?" type="button">Sil</button>
+                                    <button class="btn btn-sm btn-danger " onclick="getmodal(this)" data-info="<?=base_url($urls["Delete"]."/".$bilgi["id"])?>" data-title="Emin Misiniz?" type="button">Sil</button>
                                     <?php
                                 }
                                 ?></td>

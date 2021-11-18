@@ -7,9 +7,10 @@
             
             <div class="col-6">Öğretim Yılı  <select name="donemId" id="donemler" class="form-control">
                 <?php 
+                
                 foreach($donemler as $donem){
                     ?>
-                    <option value="<?=$donem["id"]?>"<?=$filtre["donemId"]==$donem["id"]?"selected":""?>><?=$donem["baslangicYil"]."-".$donem["bitisYil"]?></option>
+                    <option value="<?=$donem["id"]?>"<?=isset($filtre["donemId"])==true?($filtre["donemId"]==$donem["id"]?"selected":""):""?>><?=$donem["baslangicYil"]."-".$donem["bitisYil"]?></option>
                     <?php
                 }
                 ?>
@@ -24,13 +25,16 @@
     </div>
 </div>
 <script>
-
+    
+    var filtre = <?=json_encode($filtre)?>;
     function BodyLoad(e){
         var a = new bolge();
         a.update().then(()=>{
-            if("<?=$filtre["bolgeId"]?>"!= ""){
-                a.select.selected("<?=$filtre["bolgeId"]?>");
-                a.onChangeEvent();
+            if(filtre.length>0){
+                if(filtre["bolgeId"]!= ""){
+                    a.select.selected(filtre["bolgeId"]);
+                    a.onChangeEvent();
+                }
             }
         });
         a.AddStarter();
@@ -54,10 +58,12 @@
             reset("bolgeler");
             if(this.select.select.value != "Görev Bölgesi"){
                 var a = new yer(this.select.select.value);
-                a.update().then(()=>{
-                    if(("<?=$filtre["yerId"]?>"!= "")){
-                        a.select.selected("<?=$filtre["yerId"]?>");
-                        a.onChangeEvent();
+                a.update().then(()=>{            
+                    if(filtre.length>0){
+                        if(filtre["yerId"]!= ""){
+                            a.select.selected(filtre["yerId"]);
+                            a.onChangeEvent();
+                        }            
                     }
                 });
                 a.AddStarter();
@@ -82,10 +88,12 @@
             reset("yerler");
             if(this.select.select.value != "Görev Yeri"){
                 var a = new okul(this.select.select.value);
-                a.update().then(()=>{
-                    if("<?=$filtre["okulId"]?>"!= ""){
-                        a.select.selected("<?=$filtre["okulId"]?>");
-                        a.onChangeEvent();
+                a.update().then(()=>{            
+                    if(filtre.length>0){
+                        if(filtre["okulId"]!= ""){
+                            a.select.selected(filtre["okulId"]);
+                            a.onChangeEvent();
+                        }            
                     }
                 });
                 a.AddStarter();
