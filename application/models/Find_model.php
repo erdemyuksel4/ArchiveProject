@@ -121,11 +121,11 @@ class Find_model extends CI_Model{
                 $dat["donemId"] = $this->param["donemId"];
                 $dat["donem"] = $this->param["donem"];
                 $this->Grade->Create($dat);
-                $get[$key]["notB"] = $this->Grade->ReadDetailSingle(["ogrenciId"=>$o["id"],"donemId"=>$this->param["donemId"],"donem"=>$this->param["donem"]]);
+                $get[$key]["notB"][] = $this->Grade->ReadDetailSingle(["ogrenciId"=>$o["id"],"donemId"=>$this->param["donemId"],"donem"=>$this->param["donem"]]);
             }else{
                 $get[$key]["notB"] = $nots;
             }
-            if(is_array(current($get[$key]["notB"]))==true){
+            if(is_array(current($get[$key]["notB"]))==true&&count($get[$key]["notB"])>0){
                 foreach($get[$key]["notB"] as $key2 => $not){
                     $not["yil"] = $this->Term->GetTermYear($not["donemId"]);
                     $get[$key]["notB"][$key2] = $not;

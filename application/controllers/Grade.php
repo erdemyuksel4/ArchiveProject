@@ -88,7 +88,6 @@ class Grade extends MY_Controller
     }
     public function Edit(){
         if($this->param["notId"]){
-
             for ($i=0; $i < count($this->param["notId"]); $i++) {
                 $this->Grade_model->Update(["id"=>$this->param["notId"][$i]],["ogrenciNot"=>$this->param["ogrenciNot"][$i]]);
             }

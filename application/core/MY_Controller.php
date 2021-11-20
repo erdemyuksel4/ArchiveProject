@@ -22,6 +22,8 @@ class MY_Controller extends CI_Controller
         }
 
     }
+
+    
     public function _remap($page, $param)
     {
         if (method_exists($this, $page)) {
@@ -109,12 +111,14 @@ class MY_Controller extends CI_Controller
         $page = $this->page;
         $this->$page($this->param);
     }
+    /* Modal yükler*/
     public function Load_Modal($page)
     {
         $this->Load_Modal_Header();
         $this->$page();
         $this->Load_Modal_Footer();
     }
+    /* Sayfa için header yükler */
     public function Load_Page_Header()
     {
         $back = $this->UrlExp($this->indexHistory(1));
@@ -123,25 +127,29 @@ class MY_Controller extends CI_Controller
         ];
         $data["urls"] = $this->PagePermControlList($data["urls"]);
         $this->load->view("dependencies/header.php", array_merge($data,$this->param??[]));
-        $this->load->view("Menu/Menu.php", $this->param);
     }
+    /* Sayfa için footer yükler*/
     public function Load_Page_Footer()
     {
         $this->load->view("dependencies/footer.php", $this->param);
     }
+    /* Modal için header yükler */
     public function Load_Modal_Header()
     {
 
         $this->load->view("Modals/Header.php", $this->param);
     }
+    /* Modal için footerı yükler */
     public function Load_Modal_Footer()
     {
         $this->load->view("Modals/Footer.php", $this->param);
     }
+    /* Kullanıcı oturum verilerini alır */
     public function GetUserData()
     {
         return $this->session->userdata("Account")["data"];
     }
+    /* Ana ve alt Sayfalara erişim kontrolü yapar*/
     public function ControlSubPages(array $sayfa, $url, bool $redirect = false)
     {
         $yasak = $this->UrlExp($sayfa["sayfaYol"]);
@@ -176,6 +184,7 @@ class MY_Controller extends CI_Controller
             return false;
         }
     }
+    /* Urlyi bileşenlerine ayırır */
     public function UrlExp($sayfa)
     {
         $base_url = array_filter(explode("/", parse_url(base_url())["path"]));
@@ -194,6 +203,7 @@ class MY_Controller extends CI_Controller
             "Path"=> $this->doNULL(implode("/",$sayfa))
         ];
     }
+    /* Değer boş geliyorsa null veri tipine dönüştürürür */
     public function doNULL($val){
         if(!isset($val)||trim($val)==null||trim($val)==""||$val==null){
             return null;
@@ -201,6 +211,7 @@ class MY_Controller extends CI_Controller
             return $val;
         }
     }
+    /* İzin kontrolü yapar*/
     public function PermControl()
     {
         $s = $this->Page_model->ReadDetail(["yetkiId" => $this->session->userdata("Account")["data"]["yetkiId"]]);
@@ -214,6 +225,7 @@ class MY_Controller extends CI_Controller
             $this->ControlSubPages($sayfa, $curr, true);
         }
     }
+    /* Tek url üzerinde izin kontrolü yapar */
     public function PagePermControl($url)
     {
         $s = $this->session->userdata("fpages");
@@ -230,6 +242,7 @@ class MY_Controller extends CI_Controller
         }
         return $url;
     }
+    /* Liste halinde verilen urllerin üzerinde izin kontrolü yapar */
     public function PagePermControlList($urls)
     {
         $w = [];

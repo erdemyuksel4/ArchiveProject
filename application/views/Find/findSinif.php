@@ -58,7 +58,7 @@
             reset("bolgeler");
             if(this.select.select.value != "Görev Bölgesi"){
                 var a = new yer(this.select.select.value);
-                a.update().then(()=>{            
+                a.update().then(()=>{
                     if(filtre.length>0){
                         if(filtre["yerId"]!= ""){
                             a.select.selected(filtre["yerId"]);

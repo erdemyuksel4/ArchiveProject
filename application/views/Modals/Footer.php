@@ -7,7 +7,7 @@
               ?>
               <a href="<?=base_url($footerAgreeLocation."/".$param)?>" type="button" class="btn btn-primary"><?=$footerButtonText?></a>
               <?php
-            }else{
+            }else{/* Form var ise*/
               ?>
               
               <button class="btn btn-primary" id="SubmitButton" type="submit" onclick="SubmitForm('#form',()=>{$('.modal').modal('hide');Refresh()},{name:'page',value:'page'})"><?=$footerButtonText?></button>

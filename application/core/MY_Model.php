@@ -30,6 +30,7 @@ abstract class MY_Model extends CI_model implements ICreate, IRead, IReadDetail,
 
         }
     }
+    
     public function getEmptyData() {
 
         $arr = array();

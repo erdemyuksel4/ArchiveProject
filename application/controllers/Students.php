@@ -100,7 +100,7 @@ class Students extends MY_Controller
     public function StudentEdit(){
         $this->Find_model->LoadModel($this);
         $data = $this->Find_model->Find("Student",["id"=>$this->param[0]]);
-        $data["okullar"] = $this->Find_model->Find("Schools");       
+        $data["okullar"] = $this->Find_model->Find("Schools");
         $this->load->view("Pages/Edit/ogrenciDuzenle.php",$data);
     }
     public function StudentDelete(){
@@ -143,7 +143,6 @@ class Students extends MY_Controller
         redirect(base_url("Students/StudentEdit/".$id));
     }
     protected function Edit(){
-       
         $sinifAd = (($this->param["sinif"])??"")."-".(($this->param["sube"])??"");
         $stu = $this->Student_model->ReadDetailSingle(["id"=>$this->param["id"]]);
         $this->param["sinifId"] = $this->Class_model->ClassControl(["sinifAdi"=>$sinifAd,"okulId"=>$this->param["okulId"],"donemId"=>$stu["donemId"]]);

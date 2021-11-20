@@ -64,7 +64,7 @@ class Absence extends MY_Controller
         $urls = [
             "Edit"=>"Absence/AbsenceEdit",
         ];
-        $this->param["donemId"] = $this->param["donemId"]??$this->Term_model->FindActiveTerm()["id"];
+        $this->param["donemId"] = $this->param["donemId"]??$this->Term_model->FindActiveTerm()["id"];        
         $this->param["donem"] = $this->param["donem"]??1;
         $data["bilgiler"] = $this->BringStudent();
         $this->load->view("Find/findStudent.php",["donemler"=>$this->Term_model->Read(),"location"=>"Absence/Absence","filtre"=>$this->param]);
