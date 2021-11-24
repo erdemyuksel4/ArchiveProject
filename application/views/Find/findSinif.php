@@ -3,7 +3,7 @@
         Arama
     </div>
     <div class="card-body ">
-        <form action="<?=base_url($location)?>" method="post" class="row" id="">
+        <form action="<?=base_url($location)?>" method="get" class="row" id="">
             
             <div class="col-6">Öğretim Yılı  <select name="donemId" id="donemler" class="form-control">
                 <?php 
@@ -26,15 +26,15 @@
 </div>
 <script>
     
-    var filtre = <?=json_encode($filtre)?>;
+    var filtre = JSON.parse("<?php echo addslashes(json_encode($filtre))?>");
+
     function BodyLoad(e){
         var a = new bolge();
         a.update().then(()=>{
-            if(filtre.length>0){
-                if(filtre["bolgeId"]!= ""){
-                    a.select.selected(filtre["bolgeId"]);
-                    a.onChangeEvent();
-                }
+            if(filtre["bolgeId"]!= ""){
+                a.select.selected(filtre["bolgeId"]);
+                filtre["bolgeId"] = undefined;
+                a.onChangeEvent();
             }
         });
         a.AddStarter();
@@ -59,12 +59,11 @@
             if(this.select.select.value != "Görev Bölgesi"){
                 var a = new yer(this.select.select.value);
                 a.update().then(()=>{
-                    if(filtre.length>0){
-                        if(filtre["yerId"]!= ""){
-                            a.select.selected(filtre["yerId"]);
-                            a.onChangeEvent();
-                        }            
-                    }
+                    if(filtre["yerId"]!= ""){
+                        a.select.selected(filtre["yerId"]);
+                        filtre["yerId"] = undefined;
+                        a.onChangeEvent();
+                    }            
                 });
                 a.AddStarter();
                 a.select.select.onchange = ()=>{
@@ -89,12 +88,11 @@
             if(this.select.select.value != "Görev Yeri"){
                 var a = new okul(this.select.select.value);
                 a.update().then(()=>{            
-                    if(filtre.length>0){
-                        if(filtre["okulId"]!= ""){
-                            a.select.selected(filtre["okulId"]);
-                            a.onChangeEvent();
-                        }            
-                    }
+                    if(filtre["okulId"]!= ""){
+                        a.select.selected(filtre["okulId"]);
+                        filtre["okulId"] = undefined;
+                        a.onChangeEvent();
+                    }            
                 });
                 a.AddStarter();
                 a.select.select.onchange = ()=>{

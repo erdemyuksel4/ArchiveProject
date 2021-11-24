@@ -25,7 +25,6 @@ class Verify extends MY_Controller{
         }else if($s["yetkiId"]==1){
             $this->User_model->Update(["id"=>$id],["onay"=>1]);
         }else if($s["yetkiId"]==7){
-            $this->Teacher_model->Create($data);
             $this->User_model->Update(["id"=>$id],["onay"=>1]);
         }else if($s["yetkiId"]==9){
             $this->Teacher_model->Create($data);

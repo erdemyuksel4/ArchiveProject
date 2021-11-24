@@ -14,12 +14,13 @@
     </div>
 </div>
 <script>
-
+    var filter = JSON.parse("<?php echo addslashes(json_encode($filtre))?>");
     function BodyLoad(e){
         var a = new bolge();
         a.update().then(()=>{
-            if("<?=$filtre["bolgeId"]?>"!= ""){
-                a.select.selected("<?=$filtre["bolgeId"]?>");
+            if(filter["bolgeId"]!= ""){
+                a.select.selected(filter["bolgeId"]);
+                filter["bolgeId"] = undefined;
                 a.onChangeEvent();
             }
         });
@@ -43,8 +44,9 @@
                 var a = new okul(this.select.select.value);
                 reset("bolgeler");
                 a.update().then(()=>{
-                    if(("<?=$filtre["okulId"]?>"!= "")){
-                        a.select.selected("<?=$filtre["okulId"]?>");
+                    if(filter["okulId"]!= ""){
+                        a.select.selected(filter["okulId"]);
+                        filter["okulId"] = undefined;
                         a.onChangeEvent();
                     }
                 });
@@ -70,8 +72,9 @@
                 var a = new ogretmen(this.select.select.value);
                 reset("okullar");
                 a.update().then(()=>{
-                    if("<?=$filtre["ogretmenId"]?>"!= ""){
-                        a.select.selected("<?=$filtre["ogretmenId"]?>");
+                    if(filter["ogretmenId"]!= ""){
+                        a.select.selected(filter["ogretmenId"]);
+                        filter["ogretmenId"] = undefined;
                         a.onChangeEvent();
                     }
                 });

@@ -1,6 +1,6 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-
+//Find model Entegresi eksik
 class Teachers extends MY_Controller
 {
     public $page = "Teacher";
@@ -23,8 +23,8 @@ class Teachers extends MY_Controller
         $this->Find_model->LoadModel($this);
         if (isset($this->param)) {
             $data = $this->Find_model->Find("Teachers",$this->param,["kullaniciId"=>$ses["data"]["id"]]);
+            echo json_encode($data);
         }
-        echo json_encode($data);
     }
     public function BringTeacher(){
         $ses = $this->session->userdata("Account");
@@ -84,30 +84,36 @@ class Teachers extends MY_Controller
         }
     }
     public function TeacherDetail(){
-        $this->Teacher_model->id = $this->param[0];
-        $data = $this->Teacher_model->ReadDetailSingle(array("id"=>$this->Teacher_model->id));
-
-        $this->School_model->id= $data["okulId"];
-        $data["okulAdi"] = $this->School_model->ReadDetailSingle(array("id"=>$this->School_model->id))["ad"];
-
-        $this->Area_model->id= $data["bolgeId"];
-        $data["bolgeAdi"] = $this->Area_model->ReadDetailSingle(["id"=>$data["bolgeId"]])["bolgeAdi"];
-
-        $this->Place_model->id= $data["yerId"];
-        $data["yerAdi"] = $this->Place_model->ReadDetailSingle(["id"=>$data["yerId"]])["yerAdi"];
-        $ad = [];
-        if(strlen($data["gorevYaptigiOkullar"])>2){
-            foreach (array_filter(explode(";",$data["gorevYaptigiOkullar"])) as $value){
-                $ad[] = $this->School_model->ReadDetailSingle(array('id' =>$value))["ad"];
-            }
+        $ses = $this->session->userdata("Account");
+        $this->Find_model->LoadModel($this);
+        if (isset($this->param[0])) {
+            $data = $this->Find_model->Find("Teacher",["id"=>$this->param[0]],["kullaniciId"=>$ses["data"]["id"]]);
         }
-        $data["gorevYaptigiOkullar"] = $ad;
-        $data["TGOK"] = $this->TGOK_model->ReadDetailSingle(array('ogretmenId' =>$this->param[0]));
-        $data["OYDG"] = $this->OYDG_model->ReadDetail(array('ogretmenId' =>$this->param[0]));
-        $data["Vaccine"] = $this->Vaccine_model->ReadDetail(array('ogretmenId' =>$this->param[0]));
-        $data["Lang"] = $this->Language_model->ReadDetail(array('ogretmenId' =>$this->param[0]));
-
-        $this->load->view("Pages/Detail/ogretmenDetaylari.php",$data);
+        if(isset($data)==true) {
+            $okulId= $data["okulId"];
+            $data["okulAdi"] = $this->Find_model->Find("School",["id"=>$okulId],["kullaniciId"=>$ses["data"]["id"]])["ad"];
+    
+            $bolgeId= $data["bolgeId"];
+            $data["bolgeAdi"] = $this->Find_model->Find("Area",["id"=>$bolgeId],["kullaniciId"=>$ses["data"]["id"]])[0]["bolgeAdi"];
+    
+            $yerId = $data["yerId"];
+            $data["yerAdi"] = $this->Find_model->Find("Place",["id"=>$yerId],["kullaniciId"=>$ses["data"]["id"]])["yerAdi"];
+            $ad = [];
+            if(strlen($data["gorevYaptigiOkullar"])>2){
+                foreach (array_filter(explode(";",$data["gorevYaptigiOkullar"])) as $value){
+                    $ad[] = $this->Find_model->Find("School",["id"=>$value],["kullaniciId"=>$ses["data"]["id"]])["ad"];
+                }
+            }
+            $data["gorevYaptigiOkullar"] = $ad;
+            $data["TGOK"] = $this->TGOK_model->ReadDetailSingle(array('ogretmenId' =>$this->param[0]));
+            $data["OYDG"] = $this->OYDG_model->ReadDetail(array('ogretmenId' =>$this->param[0]));
+            $data["Vaccine"] = $this->Vaccine_model->ReadDetail(array('ogretmenId' =>$this->param[0]));
+            $data["Lang"] = $this->Language_model->ReadDetail(array('ogretmenId' =>$this->param[0]));
+    
+            $this->load->view("Pages/Detail/ogretmenDetaylari.php",$data);
+        }else{
+            redirect(base_url());
+        }
     }
     public function TeacherDelete(){
         $data = [

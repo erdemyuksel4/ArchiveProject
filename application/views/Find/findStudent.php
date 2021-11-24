@@ -4,7 +4,6 @@
     </div>
     <div class="card-body ">
         <form action="<?=base_url($location)?>" method="get" class="row" id="">
-            
             <div class="col-6">Öğretim Yılı  <select name="donemId" id="donemler" class="form-control">
                 <?php
                 foreach($donemler as $donem){
@@ -63,11 +62,13 @@
             reset("bolgeler");
             if(this.select.select.value != "Görev Bölgesi"){
                 var a = new yer(this.select.select.value);
-                a.update().then(()=>{
-                    if((filter["yerId"]!= "")){
-                        a.select.selected(filter["yerId"]);
-                        filter["yerId"]= undefined;
-                        a.onChangeEvent();
+                a.update().then(()=>{                    
+                    if(filter.length>0){
+                        if((filter["yerId"]!= "")){
+                            a.select.selected(filter["yerId"]);
+                            filter["yerId"]= undefined;
+                            a.onChangeEvent();
+                        }                    
                     }
                 });
                 a.AddStarter();

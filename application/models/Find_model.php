@@ -156,11 +156,23 @@ class Find_model extends CI_Model{
                     case "Class":
                         $get = $this->Class->ReadDetailSingle($filter);
                         break;
+                    case "School":
+                        $get = $this->School->ReadDetailSingle($filter);
+                        break;
+                    case "Schools":
+                        $get = $this->School->ReadDetail($filter);
+                        break;
                     case "Classes":
                         $get = $this->Class->ReadDetail($filter);
                         break;
                     case "Area":
                         $get = $this->GetArea();
+                        break;
+                    case "Place":
+                        $get = $this->Place->ReadDetailSingle($filter);
+                        break;
+                    case "Places":
+                        $get = $this->Place->ReadDetail($filter);
                         break;
                     case "Schools":
                         $get = $this->GetSchoolDetail($filter);
@@ -242,10 +254,22 @@ class Find_model extends CI_Model{
                     case "Lessons":
                         $get = $this->getLessons($filter);
                         break;
+                    case "Place":
+                        $get = $this->Place->ReadDetailSingle($filter);
+                        break;
+                    case "Places":
+                        $get = $this->Place->ReadDetail($filter);
+                        break;
                 }
                 break;
             case 8://Koordinator
                 switch ($want){
+                    case "Place":
+                        $get = $this->Place->ReadDetailSingle($filter);
+                        break;
+                    case "Places":
+                        $get = $this->Place->ReadDetail($filter);
+                        break;
                     case "Class":
                         $get= $this->Class->ReadDetailSingle($filter);
                         break;
@@ -314,6 +338,12 @@ class Find_model extends CI_Model{
                 break;
             case 7://Musaviri
                 switch ($want){
+                    case "Place":
+                        $get = $this->Place->ReadDetailSingle($filter);
+                        break;
+                    case "Places":
+                        $get = $this->Place->ReadDetail($filter);
+                        break;
                     case "Class":
                         $get = $this->Class->ReadDetailSingle($filter);
                         break;
